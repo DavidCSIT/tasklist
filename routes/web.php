@@ -10,6 +10,11 @@ Route::get('/', function () {
 Route::get('/balaram', function () {
     return view('balaram');
 });
+
+Route::get('/amanda', function () {
+    return view('amanda');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
