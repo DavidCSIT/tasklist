@@ -7,7 +7,9 @@ Route::resource('tasks', TaskController::class);
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/balaram', function () {
+    return view('balaram');
+});
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
