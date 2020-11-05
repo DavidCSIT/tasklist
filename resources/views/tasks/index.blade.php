@@ -29,12 +29,16 @@
 
                   <a class="mt-1 mx-auto btn btn-small btn-success" href="tasks/{{$task->id}}">Show this task</a>
 
-                  <!-- @auth -->
+                  @auth
                   @csrf
                   <a class="mt-1 mx-auto btn btn-small btn-info" href="tasks/{{$task->id}}/edit">Edit this task</a>
 
+                  @endauth
+                  
+                  @can('is-admin')
+                  @csrf
                   <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger" >Delete this task</button>
-                  <!-- @endauth -->
+                  @endcan
 
                 </form>
               </td>
