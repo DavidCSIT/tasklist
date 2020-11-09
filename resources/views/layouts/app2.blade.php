@@ -24,11 +24,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="/recipes">List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/tasks">List <span class="sr-only">(current)</span></a>
               </li>
               @auth
               <li class="nav-item">
-                <a class="nav-link active" href="/recipes/create">New</a>
+                <a class="nav-link active" href="/tasks/create">New</a>
               </li>
               @endauth
 

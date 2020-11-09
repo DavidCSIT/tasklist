@@ -23,26 +23,24 @@
             <td>{{ $task->description }}</td>
             <td>{{ $task->due_at }}</td>
             <td>{{ $task->priority }}</td>
+          @auth
             <td>
-                <form action="tasks/{{$task->id}}" method="POST">
-                  @method('DELETE')
+              <form action="tasks/{{$task->id}}" method="POST">
+                @method('DELETE')
+                @csrf
 
-                  <a class="mt-1 mx-auto btn btn-small btn-success" href="tasks/{{$task->id}}">Show this task</a>
+                <a class="mt-1 mx-auto btn btn-small btn-success" href="tasks/{{$task->id}}">Show this task</a>
 
-                  @auth
-                  @csrf
-                  <a class="mt-1 mx-auto btn btn-small btn-info" href="tasks/{{$task->id}}/edit">Edit this task</a>
+                @canany(['update-task', 'is-admin' ],$task)
+                 <a class="mt-1 mx-auto btn btn-small btn-info" href="tasks/{{$task->id}}/edit">Edit this task</a>
+                @endcanany
 
-                  @endauth
-                  
-                  @can('is-admin')
-                  @csrf
-                  <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger" >Delete this task</button>
-                  @endcan
-
-                </form>
-              </td>
-
+                @can('is-admin')
+                    <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger" >Delete this task</button>
+                @endcan
+            </form>
+           </td>
+          @endauth
         </tr>
     @endforeach
     </tbody>

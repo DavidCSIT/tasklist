@@ -24,9 +24,16 @@
   </div>
 
   <div class="field">
-    <label for="due_at">Description</label>
+    <label for="due_at">Due</label>
     <div class="control">
       <input class="form-control input {{ $errors->has('due_at') ? 'is-danger' : '' }}" type="text" name="due_at" value="{{$task->due_at}}" id="due_at">
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="image_path">Image</label>
+    <div class="control">
+      <input class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" type="text" name="image_path" value="{{$task->image_path}}" id="image_path">
     </div>
   </div>
 

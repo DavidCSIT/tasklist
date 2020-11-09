@@ -28,7 +28,7 @@ class TaskFactory extends Factory
           'priority' => $this->faker->randomDigit,
           'created_at' => now(),
           'updated_at' => now(),
-          'user_id' => $this->faker->randomDigit + 1
+          'user_id' => $this->faker->numberBetween($min = 1, $max = 3)
         ];
     }
 }
