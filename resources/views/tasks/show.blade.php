@@ -42,7 +42,8 @@
       <strong>Name</strong> {{$task->name}}<br>
       <strong>Description</strong> {{$task->description}}<br>
       <strong>Due</strong> {{$task->due_at}}<br>
-      <strong>Priority</strong> {{$task->priority}}<br>
+      <strong>Priority</strong> {{$task->priority}}<br><br>
+      <img class="img-thumbnail"  src="/images/{{$task->image_path}}" alt="">
   </p>
 </div>
 </body>

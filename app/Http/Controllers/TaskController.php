@@ -48,8 +48,12 @@ class TaskController extends Controller
       $task->description =  request('description');
       $task->due_at =  request('due_at');
       $task->priority =  request('priority');
+      $task->image_path =  request('image_path');
       $task->user_id =  Auth::user()->id;
       $task->save();
+
+      $request->image->storeAs('/public', a.jpg)
+      // $request->image->storeAs('/public', $validated['name'].".".$extension)
 
       return redirect('/tasks');
     }
