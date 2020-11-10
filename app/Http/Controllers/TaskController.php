@@ -38,7 +38,6 @@ class TaskController extends Controller
     public function store(Request $request)
     {
 
-      dd($request);
 
       request()->validate([
         'name'=> 'required',
@@ -49,11 +48,21 @@ class TaskController extends Controller
 
 
       $task = new Task();
+
+      $fileName = time().'_'.$request->file->getClientOriginalName();
+      $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+      $task->file_name = time().'_'.$request->file->getClientOriginalName();
+      $task->file_path = '/storage/' . $filePath;
+
       $task->name = request('name');
       $task->description =  request('description');
       $task->due_at =  request('due_at');
       $task->priority =  request('priority');
-      $task->image_path =  request('image_path');
+
+      $task->file_name =  time().'_'.$request->file->getClientOriginalName();;
+      $task->file_path =  $request->file('file')->storeAs('uploads', $fileName, 'public');
+
       $task->user_id =  Auth::user()->id;
       $task->save();
 
