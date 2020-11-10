@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <h1>Edit Recipe</h1>
 
-<form method="POST" action="/tasks/{{$task->id}} ">
+<form method="POST" action="/tasks/{{$task->id}}" enctype="multipart/form-data">
   @method('PUT')
   @csrf
 
@@ -30,12 +30,17 @@
     </div>
   </div>
 
+
+
   <div class="field">
-    <label for="image_path">Image</label>
-    <div class="control">
-      <input class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" type="text" name="image_path" value="{{$task->image_path}}" id="image_path">
-    </div>
+     <label for="file" class="">Image</label>
+     <div class="control">
+        <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file" >
+        {{$task->file}}
+     </div>
   </div>
+
+
 
   <div class="row">
     <div class="field form-group col">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
+
 class TaskController extends Controller
 {
     /**
@@ -36,12 +37,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
+      dd($request);
+
       request()->validate([
         'name'=> 'required',
         'description'=> 'required',
         'due_at'=> 'required',
         'priority'=> 'required'
       ]);
+
 
       $task = new Task();
       $task->name = request('name');
@@ -52,8 +57,33 @@ class TaskController extends Controller
       $task->user_id =  Auth::user()->id;
       $task->save();
 
-      $request->image->storeAs('/public', a.jpg)
-      // $request->image->storeAs('/public', $validated['name'].".".$extension)
+      //$request->image->storeAs('/public', a.jpg);
+
+      // Storage::url(a.jpg);
+      //           $file = File::create([
+      //              'name' => $validated['name'],
+      //               'url' => $url,
+      //           ]);
+      //           Session::flash('success', "Success!");
+      //           return \Redirect::back();
+      //       }
+      //   }
+      //   abort(500, 'Could not upload image :(');
+
+
+      // Storage::url($validated['name'].".".$extension);
+      //           $file = File::create([
+      //              'name' => $validated['name'],
+      //               'url' => $url,
+      //           ]);
+      //           Session::flash('success', "Success!");
+      //           return \Redirect::back();
+      //       }
+      //   }
+      //   abort(500, 'Could not upload image :(');
+
+
+      //$request->image->storeAs('/public', $validated['name'].".".$extension)
 
       return redirect('/tasks');
     }
@@ -94,12 +124,23 @@ class TaskController extends Controller
         'description'=> 'required',
         'due_at'=> 'required',
         'priority'=> 'required'
+        // 'file' => 'required|mimes:jpg|max:2048'
       ]);
+
+      $fileModel = new File;
+
+      if($request->file()) {
+          $fileName = $request->file->getClientOriginalName();
+          $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+          $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+          $fileModel->file_path = '/storage/' . $filePath;
+          $fileModel->save();
+          }
 
       $task->update($request->all());
 
       return redirect('tasks');
-
     }
 
 

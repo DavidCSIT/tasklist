@@ -20,7 +20,8 @@ class CreateTasksTable extends Migration
             $table->date('due_at');
             $table->integer('priority');
             $table->timestamps();
-            $table->string('image_path')->nullable();
+            $table->string('file_name')->nullable();
+            $table->string('file_path')->nullable();
             $table->foreignId('user_id')->constrained();
         });
     }

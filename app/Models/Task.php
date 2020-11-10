@@ -13,7 +13,8 @@ class Task extends Model
     'name',
     'description',
     'due_at',
-    'image_path',
+    'file_name',
+    'file_path',
     'priority'
   ];
 
