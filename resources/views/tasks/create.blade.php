@@ -3,16 +3,10 @@
 @section('content')
 
 <div class="container">
-<h1>New Recipe</h1>
+<h1>New Task</h1>
 
-<!-- will be used to show any messages -->
-@if (Session::has('message'))
-    <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
-
-<form method="POST" action="/recipes">
+<form method="POST" action="/tasks" enctype="multipart/form-data">
   @csrf
-
 
   <div class="field">
     <label for="name">Name</label>
@@ -22,56 +16,44 @@
   </div>
 
   <div class="field">
-    <label for="image">Image</label>
+    <label for="description">Description</label>
     <div class="control">
-      <input class="form-control input {{ $errors->has('image') ? 'is-danger' : '' }}" type="text" name="image" value="{{ @old('image') }}" id="image" placeholder="/images/chicken.jpg">
+      <input class="form-control input {{ $errors->has('description') ? 'is-danger' : '' }}" type="text" name="description" value="{{ @old('description') }}" id="description">
     </div>
   </div>
 
-  <div class="row">
-    <div class="field form-group col">
-      <label for="serves">Serves</label>
+
+    <div class="field">
+      <label for="due_at">Due</label>
       <div class="control">
-        <select class="form-control input" id="serves" name="serves">
-          <option>1</option>
-          <option>2</option>
-          <option selected>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <input class="form-control input {{ $errors->has('due_at') ? 'is-danger' : '' }}" type="text" name="due_at" value="{{ @old('due_at') }}" id="due_at">
       </div>
-  </div>
-
-    <div class="form-group col">
-      <label for="rating">Rating</label>
-      <select class="form-control @error('rating') is-invalid @enderror" id="rating" name="rating">
-        <option>1</option>
-        <option>2</option>
-        <option selected>3</option>
-        <option>4</option>
-        <option >5</option>
-      </select>
     </div>
 
-    <div class="form-group col">
-      <label for="prepTime">PrepTime</label>
-      <input type="text" class="form-control @error('prepTime') is-invalid @enderror" id="prepTime" name="prepTime" placeholder="15 mins">
-    </div>
-  </div>
-
-    <div class="control form-group">
-      <label for="ingredients">Ingredients</label>
-      <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients" rows="10"></textarea>
-
+    <div class="field">
+      <label for="file">Image</label>
+         <div class="control">
+          <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file">
+       </div>
     </div>
 
-    <div class="field form-group">
-      <label for="steps">Steps</label>
-      <div class="control">
-        <textarea class="form-control @error('steps') is-invalid @enderror" id="steps" name="steps" rows="15"></textarea>
+    <div class="row">
+      <div class="field form-group col">
+        <label for="serves">Priority</label>
+        <div class="control">
+          <select class="form-control input" id="priority" name="priority" value="{{ @old('priority') }}" >
+            <option >1</option>
+            <option >2</option>
+            <option >3</option>
+            <option >4</option>
+            <option >5</option>
+            <option >6</option>
+          </select>
+        </div>
       </div>
-
     </div>
+
+
 
      <div class="field is-grouped">
        <div class="control">

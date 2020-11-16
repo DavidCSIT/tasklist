@@ -30,6 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="/tasks/create">New</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/tasks/duethismonth">Due Today</a>
+              </li>
               @endauth
 
             </ul>

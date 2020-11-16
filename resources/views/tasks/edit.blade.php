@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-<h1>Edit Recipe</h1>
+<h1>Edit Task</h1>
 
 <form method="POST" action="/tasks/{{$task->id}}" enctype="multipart/form-data">
   @method('PUT')
@@ -30,17 +30,11 @@
     </div>
   </div>
 
-
-
   <div class="field">
-     <label for="file" class="">Image</label>
-     <div class="control">
-        <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file" >
-        {{$task->file}}
+       <div class="control">
+        <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file">
      </div>
   </div>
-
-
 
   <div class="row">
     <div class="field form-group col">

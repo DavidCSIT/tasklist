@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class TaskController extends Controller
@@ -13,6 +14,12 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function duethismonth()
+     {
+         $task = task::whereMonth('due_at',date('m'))->get();
+         return view('tasks.duethismonth', ['tasks'=>$task]);
+     }
+
     public function index()
     {
         $task = task::all();
@@ -46,9 +53,8 @@ class TaskController extends Controller
         'priority'=> 'required'
       ]);
 
-
       $task = new Task();
-
+          // dd($request);
       $fileName = time().'_'.$request->file->getClientOriginalName();
       $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
@@ -66,35 +72,7 @@ class TaskController extends Controller
       $task->user_id =  Auth::user()->id;
       $task->save();
 
-      //$request->image->storeAs('/public', a.jpg);
-
-      // Storage::url(a.jpg);
-      //           $file = File::create([
-      //              'name' => $validated['name'],
-      //               'url' => $url,
-      //           ]);
-      //           Session::flash('success', "Success!");
-      //           return \Redirect::back();
-      //       }
-      //   }
-      //   abort(500, 'Could not upload image :(');
-
-
-      // Storage::url($validated['name'].".".$extension);
-      //           $file = File::create([
-      //              'name' => $validated['name'],
-      //               'url' => $url,
-      //           ]);
-      //           Session::flash('success', "Success!");
-      //           return \Redirect::back();
-      //       }
-      //   }
-      //   abort(500, 'Could not upload image :(');
-
-
-      //$request->image->storeAs('/public', $validated['name'].".".$extension)
-
-      return redirect('/tasks');
+      return redirect('tasks');
     }
 
     /**
@@ -136,18 +114,24 @@ class TaskController extends Controller
         // 'file' => 'required|mimes:jpg|max:2048'
       ]);
 
-      $fileModel = new File;
+      $fileName = time().'_'.$request->file->getClientOriginalName();
+      // dd($fileName);
 
-      if($request->file()) {
-          $fileName = $request->file->getClientOriginalName();
-          $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+      $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
-          $fileModel->name = time().'_'.$request->file->getClientOriginalName();
-          $fileModel->file_path = '/storage/' . $filePath;
-          $fileModel->save();
-          }
+      $task->file_name = time().'_'.$request->file->getClientOriginalName();
+      $task->file_path = '/storage/' . $filePath;
 
-      $task->update($request->all());
+      $task->name = request('name');
+      $task->description =  request('description');
+      $task->due_at =  request('due_at');
+      $task->priority =  request('priority');
+
+      $task->file_name =  time().'_'.$request->file->getClientOriginalName();;
+      $task->file_path =  $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+      $task->user_id =  Auth::user()->id;
+      $task->save();
 
       return redirect('tasks');
     }
