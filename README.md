@@ -1,6 +1,7 @@
 https://www.positronx.io/laravel-file-upload-with-validation/
 
-// php artisan storage:link required to create symbolic link to storage/app/public to access image
+php artisan storage:link required to create symbolic link to storage/app/
+public to access image
 
 for large file upload
 php.ini
