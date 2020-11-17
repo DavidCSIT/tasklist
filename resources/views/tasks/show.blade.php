@@ -43,7 +43,7 @@
       <strong>Description</strong> {{$task->description}}<br>
       <strong>Due</strong> {{$task->due_at}}<br>
       <strong>Priority</strong> {{$task->priority}}<br><br>
-      <img class="img-thumbnail" src="/storage/{{$task->file_path}}" alt="">
+      <img class="img-thumbnail" src="{{$task->file_path}}" alt="">
   </p>
 </div>
 </body>

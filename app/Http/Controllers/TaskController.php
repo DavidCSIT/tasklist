@@ -58,16 +58,13 @@ class TaskController extends Controller
       $fileName = time().'_'.$request->file->getClientOriginalName();
       $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
-      $task->file_name = time().'_'.$request->file->getClientOriginalName();
+      $task->file_name = $fileName;
       $task->file_path = '/storage/' . $filePath;
 
       $task->name = request('name');
       $task->description =  request('description');
       $task->due_at =  request('due_at');
       $task->priority =  request('priority');
-
-      $task->file_name =  time().'_'.$request->file->getClientOriginalName();;
-      $task->file_path =  $request->file('file')->storeAs('uploads', $fileName, 'public');
 
       $task->user_id =  Auth::user()->id;
       $task->save();
