@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\User::factory(8)->create();
         \App\Models\Task::factory(10)->create();
+        \App\Models\Movie::factory(10)->create();
     }
 }

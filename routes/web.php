@@ -2,9 +2,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/tasks/duethismonth', [TaskController::class, 'duethismonth']);
+Route::resource('movies', MovieController::class);
 
-// Route::resource('tasks', TaskController::class);
+Route::get('/tasks/duethismonth', [TaskController::class, 'duethismonth']);
 Route::resource('tasks', TaskController::class)->only(['index']);
 Route::resource('tasks', TaskController::class)->only(['show','create','store','edit','update','destroy']) ->middleware('auth');
 

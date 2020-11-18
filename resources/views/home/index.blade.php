@@ -13,6 +13,7 @@
             <td>Description</td>
             <td>Due</td>
             <td>Priority</td>
+            <td>Image</td>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,10 @@
             <td>{{ $task->description }}</td>
             <td>{{ $task->due_at }}</td>
             <td>{{ $task->priority }}</td>
-                </tr>
+            <td>
+              <img class="img-thumbnail" src="{{$task->file_path}}" alt="no image">
+            </td>
+        </tr>
     @endforeach
     </tbody>
 </table>
