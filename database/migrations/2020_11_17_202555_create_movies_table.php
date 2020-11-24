@@ -17,6 +17,7 @@ class CreateMoviesTable extends Migration
           $table->id();
           $table->string('name');
           $table->date('opening_date');
+          $table->char('status');
           $table->string('file_name')->nullable();
           $table->string('file_path')->nullable();
           $table->timestamps();

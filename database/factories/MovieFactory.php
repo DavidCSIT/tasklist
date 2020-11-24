@@ -24,6 +24,9 @@ class MovieFactory extends Factory
         return [
             'name' => $this->faker->word,
             'opening_date' => $this->faker->dateTimeThisYear,
+            'status' => 'N',
+            'file_path' => '/storage/uploads/movie.jpg',
+            'created_at' => now(),
             'created_at' => now(),
             'updated_at' => now()
           ];

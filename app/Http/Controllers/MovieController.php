@@ -19,6 +19,12 @@ class MovieController extends Controller
         return view('movies.index', ['movies'=>$movies]);
     }
 
+    public function comingsoon()
+    {
+        $movies = DB::table('movies')->orderBy('opening_date' ,'desc')->take(4)->get();
+        return view('home.index', ['movies'=>$movies]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

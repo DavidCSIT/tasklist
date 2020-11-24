@@ -3,31 +3,26 @@
 @section('content')
 
 <div class="container-fluid">
-<h1>Task List</h1>
+<h1>Movie List</h1>
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
             <td>ID</td>
             <td>Name</td>
-            <td>Description</td>
-            <td>Due</td>
-            <td>Priority</td>
+            <td>Opening Date</td>
             <td>Image</td>
         </tr>
     </thead>
     <tbody>
-    @foreach($tasks as $task)
+    @foreach($movies as $movie)
         <tr>
-            <td>{{ $task->id }}</td>
-            <td>{{ $task->name }}</td>
-            <td>{{ $task->description }}</td>
-            <td>{{ $task->due_at }}</td>
-            <td>{{ $task->priority }}</td>
+            <td>{{ $movie->id }}</td>
+            <td>{{ $movie->name }}</td>
+            <td>{{ $movie->opening_date }}</td>
             <td>
-              <img class="img-thumbnail" src="{{$task->file_path}}" alt="no image">
+              <img class="img-thumbnail" src="{{$movie->file_path}}" alt="image coming soon">
             </td>
-        </tr>
     @endforeach
     </tbody>
 </table>
