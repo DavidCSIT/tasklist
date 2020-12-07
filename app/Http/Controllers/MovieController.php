@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
 
 class MovieController extends Controller
 {
@@ -33,8 +36,8 @@ class MovieController extends Controller
     public function create()
     {
         //load new movie form
-        return view('movies.create');
-
+        $genres = DB::table('genres')->orderBy('description')->get();
+        return view('movies.create',['genres'=>$genres]);
     }
 
     /**
@@ -61,6 +64,8 @@ class MovieController extends Controller
 
         $movie->name = request('name');
         $movie->opening_date =  request('opening_date');
+        $movie->status =  "C";
+        $movie->genre_id =  request('genre_id');
 
         $movie->save();
 

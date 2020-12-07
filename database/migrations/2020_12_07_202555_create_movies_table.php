@@ -20,6 +20,7 @@ class CreateMoviesTable extends Migration
           $table->char('status');
           $table->string('file_name')->nullable();
           $table->string('file_path')->nullable();
+          $table->foreignId('genre_id')->constrained();
           $table->timestamps();
         });
     }

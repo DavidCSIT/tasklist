@@ -24,6 +24,13 @@ class DatabaseSeeder extends Seeder
             'admin' => false,
             'password' => Hash::make('a')
         ]);
+        \App\Models\Genre::factory(1)->create([
+            'description' => 'horror'
+        ]);
+        \App\Models\Genre::factory(1)->create([
+            'description' => 'comedy'
+        ]);
+        \App\Models\Genre::factory(8)->create();
         \App\Models\User::factory(8)->create();
         \App\Models\Task::factory(10)->create();
         \App\Models\Movie::factory(10)->create();

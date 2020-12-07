@@ -16,9 +16,15 @@
         <!-- google search -->
         <script async src="https://cse.google.com/cse.js?cx=663468ebb7d57c8b2"></script>
 
+        <style media="screen">
+          footer.bg-primary  {
+              background-color: red!important;
+          }
+        </style>
+
       </head>
       <body>
-
+        <header>
         <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
           <a class="navbar-brand" href="/tasks">Tasks</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,10 +74,16 @@
               <div class="gcse-search"></div>
             </div>
           </nav>
-
+        </header>
 
         <main>
            @yield('content')
        </main>
+
+       <footer class="bg-primary">
+                <div class="footer-copyright text-center p-3 mb-2 text-white">© 2020 Copyright:<a href="https://sit.ac.nz/Queenstown"> SIT Tech QT</a>
+                </div>
+       </footer>
+
     </body>
 </html>

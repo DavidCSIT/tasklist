@@ -26,7 +26,7 @@ class MovieFactory extends Factory
             'opening_date' => $this->faker->dateTimeThisYear,
             'status' => 'N',
             'file_path' => '/storage/uploads/movie.jpg',
-            'created_at' => now(),
+            'genre_id' => $this->faker->numberBetween($min = 1, $max = 3),
             'created_at' => now(),
             'updated_at' => now()
           ];

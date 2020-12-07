@@ -30,6 +30,22 @@
        </div>
     </div>
     <br>
+
+    <div class="row">
+      <div class="field form-group col">
+        <label for="genre_id">genre</label>
+        <div class="control">
+          <select class="form-control input" id="genre_id" name="genre_id" >
+
+            @foreach($genres as $genre)
+              <option  value={{ $genre->id }} >{{ $genre->description }}</option>
+            @endforeach
+
+          </select>
+        </div>
+      </div>
+    </div>
+
      <div class="field is-grouped">
        <div class="control">
          <button class="button is-link btn btn-primary" type="submit" name="button">Submit Recipe</button>
