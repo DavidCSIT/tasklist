@@ -81,6 +81,7 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         //show one movie
+            dd("show");
     }
 
     /**
@@ -92,6 +93,8 @@ class MovieController extends Controller
     public function edit(Movie $movie)
     {
         //load my change movie form
+        $genres = DB::table('genres')->orderBy('description')->get();
+        return view('movies.edit', ['movie'=>$movie,'genres'=>$genres] );
     }
 
     /**
@@ -104,6 +107,28 @@ class MovieController extends Controller
     public function update(Request $request, Movie $movie)
     {
         //save my changes
+
+        request()->validate([
+          'name'=> 'required',
+          'opening_date'=> 'required'
+        ]);
+
+        if (!empty($request->file)) {
+
+          $fileName = time().'_'.$request->file->getClientOriginalName();
+          $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+          $movie->file_name = $fileName;
+          $movie->file_path = '/storage/' . $filePath;
+        }
+
+        $movie->name = request('name');
+        $movie->opening_date =  request('opening_date');
+        $movie->status =  "C";
+        $movie->genre_id =  request('genre_id');
+
+        $movie->save();
+
+        return redirect('movies');
     }
 
     /**

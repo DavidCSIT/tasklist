@@ -2,48 +2,49 @@
 
 @section('content')
 
-<div class="container-fluid">
-<h1>Edit Task</h1>
+<div class="container">
+<h1>Edit movie</h1>
 
-<form method="POST" action="/tasks/{{$task->id}}" enctype="multipart/form-data">
+<form method="POST" action="/movies/{{$movie->id}}" enctype="multipart/form-data">
   @method('PUT')
   @csrf
 
   <div class="field">
     <label for="name">Name</label>
     <div class="control">
-      <input class="form-control input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name" value="{{$task->name}}" id="name">
+      <input class="form-control input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name" value="{{$movie->name}}" id="name">
     </div>
   </div>
 
   <div class="field">
-    <label for="description">Description</label>
+    <label for="opening_date">Opening Date</label>
     <div class="control">
-      <input class="form-control input {{ $errors->has('description') ? 'is-danger' : '' }}" type="text" name="description" value="{{$task->description}}" id="description">
+      <input class="form-control input {{ $errors->has('opening_date') ? 'is-danger' : '' }}" type="text" name="opening_date" value="{{$movie->opening_date}}" id="opening_date">
     </div>
   </div>
 
-  <div class="field">
-    <label for="due_at">Due</label>
-    <div class="control">
-      <input class="form-control input {{ $errors->has('due_at') ? 'is-danger' : '' }}" type="text" name="due_at" value="{{$task->due_at}}" id="due_at">
-    </div>
-  </div>
-
-  <div class="field">
+  <!-- <div class="field">
+    <label for="file">Image</label>
        <div class="control">
         <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file">
      </div>
-  </div>
+  </div> -->
+
+    <div class="field">
+         <div class="control">
+          <input id="file" type="file" class="form-control input {{ $errors->has('image_path') ? 'is-danger' : '' }}" name="file">
+       </div>
+    </div>
+  <br>
 
   <div class="row">
     <div class="field form-group col">
-      <label for="genre">genre</label>
+      <label for="genre_id">genre</label>
       <div class="control">
-        <select class="form-control input" id="genre" name="genre" >
+        <select class="form-control input" id="genre_id" name="genre_id" >
 
           @foreach($genres as $genre)
-            <option {{ $genre->id }} >{{ $genre->id }}</option>
+            <option {{ $movie->genre_id == $genre->id ? 'selected' : '' }} value={{ $genre->id }} >{{ $genre->description }}</option>
           @endforeach
 
         </select>
@@ -51,11 +52,14 @@
     </div>
   </div>
 
+
+
  <div class="field is-grouped">
      <div class="control">
-         <button class="button is-link btn btn-primary" type="submit" name="button">Submit Recipe</button>
+         <button class="button is-link btn btn-primary" type="submit" name="button">Submit Movie</button>
      </div>
  </div>
-   </form>
+ </form>
+ <br>
  </div>
  @endsection

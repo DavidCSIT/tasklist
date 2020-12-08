@@ -16,17 +16,11 @@
         <!-- google search -->
         <script async src="https://cse.google.com/cse.js?cx=663468ebb7d57c8b2"></script>
 
-        <style media="screen">
-          footer.bg-primary  {
-              background-color: red!important;
-          }
-        </style>
-
       </head>
       <body>
         <header>
         <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="/tasks">Tasks</a>
+          <a class="navbar-brand" href="/">Movie Time</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,14 +28,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="/tasks">List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/movies">All Movies <span class="sr-only">(current)</span></a>
               </li>
               @auth
               <li class="nav-item">
-                <a class="nav-link active" href="/tasks/create">New</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/tasks/duethismonth">Due Today</a>
+                <a class="nav-link" href="/movies/create">New</a>
               </li>
               @endauth
 
@@ -81,7 +72,7 @@
        </main>
 
        <footer class="bg-primary">
-                <div class="footer-copyright text-center p-3 mb-2 text-white">© 2020 Copyright:<a href="https://sit.ac.nz/Queenstown"> SIT Tech QT</a>
+                <div class="footer-copyright text-center p-3 mb-2 text-white">© 2020 Copyright:<a class="text-dark" href="https://sit.ac.nz/Queenstown"> SIT Tech QT</a>
                 </div>
        </footer>
 

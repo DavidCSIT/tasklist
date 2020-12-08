@@ -48,9 +48,12 @@
 
      <div class="field is-grouped">
        <div class="control">
-         <button class="button is-link btn btn-primary" type="submit" name="button">Submit Recipe</button>
+         <button class="button is-link btn btn-primary" type="submit" name="button">Submit Movie</button>
        </div>
      </div>
    </form>
+   <br>
 </div>
+
+<br>
 @endsection
