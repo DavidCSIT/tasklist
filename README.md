@@ -14,3 +14,10 @@ for large file upload
 
 change default page after logon in
   RouteServiceProvider
+
+Tinker examples
+  $movie = \App\Models\Movie::find(1);
+  $movie->genre->description
+  $genre = \App\Models\Genre::find(1);
+  $genre->movies
+>>>    
