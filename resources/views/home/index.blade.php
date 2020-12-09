@@ -14,10 +14,12 @@
         <tr>
           <td>Move</td>
           <td>Opening Date</td>
+          <td>Genre</td>
         </tr>
         <tr>
           <td>{{ $movie->name }}</td>
           <td>{{ $movie->opening_date }}</td>
+          <td>{{ $movie->description}}</td>
         </tr>
       </table>
     </div>

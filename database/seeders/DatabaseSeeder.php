@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Genre::factory(1)->create(['description' => 'drama']);
         \App\Models\User::factory(8)->create();
         \App\Models\Task::factory(10)->create();
-        \App\Models\Movie::factory(10)->create();
+        \App\Models\Movie::factory(20)->create();
     }
 }
